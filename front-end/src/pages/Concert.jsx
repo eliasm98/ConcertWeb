@@ -186,8 +186,8 @@ function Concert() {
       return (
         <>
           <p>Wallet: {wallet}$</p>
-          <Container>
-            <Row>
+          <Container className="d-flex justify-content-center align-items-center ">
+            <Row className="text-container">
               <Col>
                 <h1>Artist: {artistName}</h1>
                 <h3>Genre: {genre}</h3>
@@ -196,9 +196,9 @@ function Concert() {
                 <h3>Ticket Amount: {ticketAmount}</h3>
                 <h2>Price: {price}$</h2>
                 <h3>Date: {date}</h3>
+                <Button onClick={createBooking}>Book Concert</Button>
               </Col>
             </Row>
-            <Button onClick={createBooking}>Book Concert</Button>
           </Container>
         </>
       );

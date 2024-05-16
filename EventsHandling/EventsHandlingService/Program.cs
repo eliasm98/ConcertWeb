@@ -8,7 +8,8 @@ using System;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var key = Encoding.ASCII.GetBytes(Startup.SECRET);
+var secretKey = builder.Configuration.GetValue<string>("JwtSettings:Secret");
+var key = Encoding.ASCII.GetBytes(secretKey);
 
 // Add services to the container.
 builder.Services.AddDbContext<EventsDbContext>(option =>
@@ -84,9 +85,4 @@ void ApplyMigration()
             _db.Database.Migrate();
         }
     }
-}
-
-public class Startup
-{
-    public const string SECRET = "jiEOLH25uxLKhZHEALSutJITQimUYoUO";
 }

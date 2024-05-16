@@ -7,7 +7,8 @@ using ProjectAuthenticationAPI.Services;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
-var key = Encoding.ASCII.GetBytes(Startup.SECRET);
+var secretKey = builder.Configuration.GetValue<string>("JwtSettings:Secret");
+var key = Encoding.ASCII.GetBytes(secretKey);
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -63,8 +64,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-public class Startup
-{
-    public const string SECRET = "jiEOLH25uxLKhZHEALSutJITQimUYoUO";
-}

@@ -42,6 +42,7 @@ function Profile() {
   return (
     <>
       <Header />
+      <h1 className="text-center mt-3">Booked Events</h1>
       <div className="container1">
         {concerts}
       </div>

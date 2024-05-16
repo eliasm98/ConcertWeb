@@ -14,10 +14,12 @@ namespace ProjectAuthenticationAPI.Services
     public class UserService
     {
         private readonly AppDbContext _context;
+        private readonly IConfiguration _config;
 
-        public UserService(AppDbContext context)
+        public UserService(AppDbContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;   
         }
 
         public async Task<User> GetUserByEmailOrUsername(string email, string username = null)
@@ -43,7 +45,8 @@ namespace ProjectAuthenticationAPI.Services
                 return null;
             }
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("jiEOLH25uxLKhZHEALSutJITQimUYoUO");
+            var secretKey = _config.GetValue<string>("JwtSettings:Secret");
+            var key = Encoding.ASCII.GetBytes(secretKey);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

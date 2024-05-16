@@ -35,3 +35,6 @@ p {
   display: inline;
   font-weight: 600;
 }
+.text-container {
+  text-align: left;
+}

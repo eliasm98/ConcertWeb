@@ -51,7 +51,7 @@ function Home() {
         const formattedDate = `${year}-${month}-${day}`;
         return (
           <div className="container2" key={index}>
-            <h1>{item.artistName}</h1>
+            <a href={`./concert?id=${item.concertID}`}><h1>{item.artistName}</h1></a>
             <h4>{item.genre}</h4>
             <h3>{item.price}$</h3>
             <h2>{formattedDate} at {item.venueName}</h2>
