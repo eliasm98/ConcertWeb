@@ -22,10 +22,15 @@ namespace ProjectAuthenticationAPI.Models
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "First Name is Required")]
-        public string FirstName {  get; set; }
+        public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Last Name is Required")]
         public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Role is Required")]
+        public string Role {  get; set; }
+
+        public int Wallet {  get; set; }
 
         [Required(ErrorMessage = "Date of Birth is Required")]
         public DateTime DateOfBirth { get; set;}

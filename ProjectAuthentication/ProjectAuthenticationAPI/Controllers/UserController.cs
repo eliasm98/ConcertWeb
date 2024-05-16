@@ -91,5 +91,26 @@ namespace ProjectAuthenticationAPI.Controllers
             }
             return Ok(new { Message = "Successfully fetched user data", User = user });
         }
+
+        [HttpPatch("process-payment")]
+        public async Task<IActionResult> ProcessPayment([FromBody] PaymentRequest request)
+        {
+            try
+            {
+                var (Success, Message) = await _userService.ProcessPayment(request.UserId, request.Price);
+                if (Success)
+                {
+                    return Ok(Message);
+                }
+                else
+                {
+                    return BadRequest(Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing the payment");
+            }
+        }
     }
 }

@@ -2,3 +2,36 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container2 {
+  background-color: #999999;
+  border-radius: 10px;
+  border: solid 1px black;
+  width: 300px;
+  height: 350px;
+  padding: 20px;
+  margin: 3% 3%;
+}
+.container2 > h2 {
+  margin-top: 45%;
+  color: #991a25
+}
+a > h1 {
+  margin-top: -20%;
+}
+.search-container {
+  background-color: black;
+  padding-bottom: 1%;
+}
+p {
+  padding-top: 1%;
+  margin-left: 80%;
+  font-size: 1.5em;
+  display: inline;
+  font-weight: 600;
+}

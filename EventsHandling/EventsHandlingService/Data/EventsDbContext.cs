@@ -46,14 +46,16 @@ namespace EventsHandlingService.Data
             {
                 BookingId = 100001,
                 ConcertID = 1,
-                TicketNb = 2
+                TicketNb = 2,
+                UserId = 1
             });
 
             modelBuilder.Entity<Booking>().HasData(new Booking
             {
                 BookingId = 100002,
                 ConcertID = 2,
-                TicketNb = 5
+                TicketNb = 5,
+                UserId = 2
             });
         }
 

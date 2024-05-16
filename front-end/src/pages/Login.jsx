@@ -23,12 +23,34 @@ function Login() {
   return (
     <>
       <Header />
-      <form>
-        <input type="text" name="username" value={username} onChange={e => {setUsername(e.target.value)}}/>
-        <input type="password" name="password" value={password} onChange={e => {setPassword(e.target.value)}}/>
-        <button onClick={(e)=>login(e)}>Login</button>
-        {isLoggedIn && <Navigate to="/" />}
-      </form>
+      <div className="container mt-5">
+        <form className="w-50 mx-auto">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              name="username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary" onClick={(e) => login(e)}>Login</button>
+          {isLoggedIn && <Navigate to="/" />}
+        </form>
+      </div>
     </>
   );
 }

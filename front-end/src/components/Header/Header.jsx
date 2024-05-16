@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import './Header.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Dropdown from "../Dropdown/Dropdown";
+
+
 
 function Header() {
   const [account, setAccount] = useState(null);
@@ -16,7 +19,7 @@ function Header() {
         };
         const response = await axios.get('http://localhost:5016/get-user', {headers});
         console.log(response);
-        setAccount(<Link to="/">{response.data.user.userName}</Link>);
+        setAccount(<Dropdown text={response.data.user.userName} role={response.data.user.role}/>);
         return response;
       } catch (error) {
         console.error("Error fetching username:", error);

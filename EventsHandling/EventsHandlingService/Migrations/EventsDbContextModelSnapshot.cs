@@ -36,6 +36,9 @@ namespace EventsHandlingService.Migrations
                     b.Property<int>("TicketNb")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("BookingId");
 
                     b.ToTable("Bookings");
@@ -45,13 +48,15 @@ namespace EventsHandlingService.Migrations
                         {
                             BookingId = 100001,
                             ConcertID = 1,
-                            TicketNb = 2
+                            TicketNb = 2,
+                            UserId = 1
                         },
                         new
                         {
                             BookingId = 100002,
                             ConcertID = 2,
-                            TicketNb = 5
+                            TicketNb = 5,
+                            UserId = 2
                         });
                 });
 
@@ -96,7 +101,7 @@ namespace EventsHandlingService.Migrations
                         {
                             ConcertID = 1,
                             ArtistName = "Adele",
-                            Date = new DateTime(2024, 5, 13, 17, 22, 3, 369, DateTimeKind.Local).AddTicks(6023),
+                            Date = new DateTime(2024, 5, 15, 13, 14, 56, 565, DateTimeKind.Local).AddTicks(1816),
                             Duration = 90,
                             Genre = "Pop",
                             Price = 50,
@@ -107,7 +112,7 @@ namespace EventsHandlingService.Migrations
                         {
                             ConcertID = 2,
                             ArtistName = "Maroon 5",
-                            Date = new DateTime(2024, 5, 13, 17, 22, 3, 369, DateTimeKind.Local).AddTicks(6137),
+                            Date = new DateTime(2024, 5, 15, 13, 14, 56, 565, DateTimeKind.Local).AddTicks(1901),
                             Duration = 120,
                             Genre = "Rock",
                             Price = 40,

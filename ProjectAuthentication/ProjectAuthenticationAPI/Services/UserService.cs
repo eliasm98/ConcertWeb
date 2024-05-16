@@ -50,7 +50,8 @@ namespace ProjectAuthenticationAPI.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
 
                 Expires = DateTime.UtcNow.AddMinutes(60),
@@ -64,6 +65,26 @@ namespace ProjectAuthenticationAPI.Services
         public async Task<User> GetUserDetails(int Id)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Id == Id);
+        }
+
+        public async Task<(bool Success, string Message)> ProcessPayment(int userId, int price)
+        {
+            var user = await GetUserDetails(userId);
+            if (user == null)
+            {
+                return (false, "User not found");
+            }
+
+            if (user.Wallet >= price)
+            {
+                user.Wallet -= price;
+                await _context.SaveChangesAsync();
+                return (true, "Payment processed successfully");
+            }
+            else
+            {
+                return (false, "Insufficient funds");
+            }
         }
     }
 }

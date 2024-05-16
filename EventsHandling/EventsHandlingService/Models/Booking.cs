@@ -6,6 +6,7 @@ namespace EventsHandlingService.Models
     {
         [Key] public int BookingId { get; set; }
         [Required] public int ConcertID { get; set; }
+        [Required] public int UserId { get; set; }
         [Required] public int TicketNb { get; set; }
     }
 }
